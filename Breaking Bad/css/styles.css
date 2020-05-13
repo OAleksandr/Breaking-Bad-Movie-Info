@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@font-face
+{
+    font-family: 'BreakingBad';
+    src: url(../fonts/Heart\ Breaking\ Bad.otf);
+}
+body
+{
+    background-image: url(../img/breaking-bad-yellow.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+main .container .heading-container
+{
+    margin-top: 30px;
+    opacity: 1;
+    overflow-x: hidden;
+}
+
+main .container .heading-container h1 
+{
+    font-family: 'BreakingBad';
+    text-align: center;
+    font-size: 80px;
+    font-weight: bold;
+   
+}
+main .container .heading-container h1 a
+{
+    text-decoration: none;
+    color: rgba(29, 61, 29, 0.952);
+}
+main .content-container
+{
+    background: rgba(255, 255, 255, 0.582);
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid white;
+    background-image: url(../img/breaking_bad_dark_green.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+}
+
+main .content-container label
+{
+    color: white;
+    font-family: 'Righteous', cursive;
+}
+
+main .display-char-info .image-info, .char-info
+{
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid white;
+    margin: auto;
+    background-image: url(../img/breaking_bad_dark_green.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+main .display-char-info .image-info h2, .char-info h2
+{
+    text-align: center;
+    font-family: 'BreakingBad';
+    color: white;
+    letter-spacing: 2px;
+}
+main .display-char-info .image-info 
+{
+  text-align: center;
+}
+main .display-char-info .char-info p
+{
+    font-size: 20px;
+    color: rgb(175, 173, 79);
+}
+main .display-char-info .char-info p span
+{
+    font-family: 'Righteous', cursive;
+    font-size: 20px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+}
+main .display-quotes .card.quote-container
+{
+    box-shadow: 0 8px 6px -6px black;
+    background-color: rgba(43, 92, 43, 0.952);
+    border: 1px solid white;
+    margin-bottom: 30px;
+}
+main .display-quotes .card.quote-container .card-body h5
+{
+    text-align: center;
+    color: white;
+    font-family: 'Righteous', cursive;
+    letter-spacing: 2px;
+}
+main .display-quotes .card.quote-container p
+{
+    text-align: center;
+    color: white;
+    letter-spacing: 1px;
+}
+
+main .display-episod-deaths .btn-section
+{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+main .display-episod-deaths a.episod-deaths-btn
+{
+    border: 1px solid white;
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+    background-image: url(../img/breaking_bad_dark_green.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    font-family: 'Righteous', cursive;
+}
+main .display-episod-deaths .collapse-container .card-body-container
+{
+    background-color: rgba(43, 92, 43, 0.952);
+    border: 1px solid white;
+}
+main .display-episod-deaths .collapse-container .card-body-container #accordionEpisods .card .card-header
+{
+    background-image: url(../img/breaking_bad_dark_green.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+main .display-episod-deaths .collapse-container .card-body-container #accordionEpisods .card .card-header button
+{
+    text-decoration: none;
+    color: white;
+}
+main .display-episod-deaths .collapse-container .card-body-container #accordionEpisods .card .card-header button span
+{
+    font-size: 20px;
+    font-family: 'Righteous', cursive;
+    color: white;
+}
+main .display-episod-deaths .collapse-container .card-body-container #accordionEpisods .card .collapse.show .card-body p span
+{
+    font-family: 'Righteous', cursive;
+}
+main .display-episod-deaths .collapse-container .card-body-container #accordionEpisods .card .collapse.show .card-body
+{
+    text-align: center;
+}
