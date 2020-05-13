@@ -99,7 +99,7 @@
                                             <p class="number-of-kills"></p>                                          
                                             <hr>
                                             <p><span>Breaking Bad Appearance:</span> season ${seasonAppearance}</p>
-                                            <p><span>Better Call Soul Appearance:</span> season ${betterCallSoulAppearance}</p>
+                                            <p><span>Better Call Saul Appearance:</span> season ${betterCallSoulAppearance}</p>
                                             <hr>
                                             <p><span>Portrayed:</span> ${actor}</p>
                                         </div>
