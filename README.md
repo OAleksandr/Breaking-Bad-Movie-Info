@@ -5,3 +5,5 @@ Created with JavaScript using [Breaking Bad API](https://www.breakingbadapi.com/
 > __Note:__ If you experience any problems or data is not showing on the web page, feel free to contribute by creating an __issue__ or a __pull request__ on __GitHub__. I will fix it as soon as possible.
 ***
 ![](Images/breaking-bad-info.png)
+***
+![](Images/breaking-bad-info-2.png)
