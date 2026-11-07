@@ -3,154 +3,343 @@
 {
     font-family: 'BreakingBad';
     src: url(../fonts/Heart\ Breaking\ Bad.otf);
+    font-display: swap;
+}
+
+:root
+{
+    --bb-green-dark: #0b130d;
+    --bb-green: #2b5c2b;
+    --bb-green-light: #3d7a3d;
+    --bb-gold: #f0d264;
+    --bb-text: #f3f1e6;
+    --bb-border: rgba(255, 255, 255, 0.85);
+    --bb-radius: 6px;
+    /* Same dark-green glow as img/breaking_bad_dark_green.jpg, minus the logo
+       in its centre that used to sit on top of the text. */
+    --bb-panel-bg: radial-gradient(ellipse at 50% 100%, #36623a 0%, #1d3a22 45%, #0b130d 100%);
+}
+
+/* The photo background lives on a fixed layer instead of using
+   background-attachment: fixed, which most phones ignore or render blurry. */
+/* Both elements need it: the slide-in animations briefly start off-screen,
+   which otherwise lets phones scroll sideways while they play. */
+html,
+body
+{
+    overflow-x: hidden;
 }
 body
 {
-    background-image: url(../img/breaking-bad-yellow.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    overflow-x: hidden;
+    background-color: #d8a521;
+    color: var(--bb-text);
+}
+body::before
+{
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: url(../img/breaking-bad-yellow.jpg) 30% center / cover no-repeat;
 }
 
+main
+{
+    padding-bottom: 40px;
+}
+
+/* ---------- Title ---------- */
 main .container .heading-container
 {
     margin-top: 30px;
-    opacity: 1;
-    overflow-x: hidden;
 }
-
-main .container .heading-container h1 
+main .container .heading-container h1
 {
     font-family: 'BreakingBad';
     text-align: center;
-    font-size: 80px;
+    font-size: clamp(2.6rem, 9vw, 5rem);
+    line-height: 1.15;
     font-weight: bold;
-   
+    margin-bottom: 0.5rem;
 }
 main .container .heading-container h1 a
 {
     text-decoration: none;
-    color: rgba(29, 61, 29, 0.952);
+    color: #163a19;
+    /* Soft yellow glow keeps the title readable over the darker parts of the photo. */
+    text-shadow: 0 0 10px rgba(255, 221, 102, 0.95), 0 0 22px rgba(255, 221, 102, 0.75);
 }
-main .content-container
+main hr
 {
-    background: rgba(255, 255, 255, 0.582);
-    padding: 20px;
-    border-radius: 5px;
-    border: 1px solid white;
-    background-image: url(../img/breaking_bad_dark_green.jpg);
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
+    border-top-color: rgba(255, 255, 255, 0.35);
 }
 
+/* ---------- Shared dark-green panels ---------- */
+main .content-container,
+main .display-char-info .image-info,
+main .display-char-info .char-info
+{
+    padding: 20px;
+    border-radius: var(--bb-radius);
+    border: 1px solid var(--bb-border);
+    background: var(--bb-panel-bg);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* ---------- Character picker ---------- */
 main .content-container label
 {
-    color: white;
+    color: var(--bb-text);
     font-family: 'Righteous', cursive;
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+}
+main .content-container .form-group
+{
+    margin-bottom: 0;
+}
+main .content-container select
+{
+    cursor: pointer;
+}
+main .content-container select:focus
+{
+    border-color: var(--bb-gold);
+    box-shadow: 0 0 0 0.2rem rgba(240, 210, 100, 0.45);
 }
 
-main .display-char-info .image-info, .char-info
+/* ---------- Character info ---------- */
+main .display-char-info
 {
-    padding: 20px;
-    border-radius: 5px;
-    border: 1px solid white;
-    margin: auto;
-    background-image: url(../img/breaking_bad_dark_green.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    align-items: flex-start;
 }
-main .display-char-info .image-info h2, .char-info h2
+main .display-char-info .image-info,
+main .display-char-info .char-info
+{
+    margin: 0 auto;
+}
+/* No character picked yet: hide the divider under the empty info row. */
+main .display-char-info:empty + hr
+{
+    display: none;
+}
+main .display-char-info .image-info
+{
+    text-align: center;
+}
+main .display-char-info .image-info h2,
+main .display-char-info .char-info h2
 {
     text-align: center;
     font-family: 'BreakingBad';
-    color: white;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: var(--bb-text);
     letter-spacing: 2px;
+    overflow-wrap: anywhere;
 }
-main .display-char-info .image-info 
+main .display-char-info .image-info img
 {
-  text-align: center;
+    width: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    object-position: top;
 }
 main .display-char-info .char-info p
 {
-    font-size: 20px;
-    color: rgb(175, 173, 79);
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--bb-text);
+    margin-bottom: 0.6rem;
 }
 main .display-char-info .char-info p span
 {
     font-family: 'Righteous', cursive;
-    font-size: 20px;
-    font-weight: bolder;
-    letter-spacing: 2px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    color: var(--bb-gold);
+    margin-right: 4px;
+}
+main .display-char-info .char-info hr
+{
+    border-top-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- Quotes ---------- */
+main .display-quotes
+{
+    margin-top: 10px;
 }
 main .display-quotes .card.quote-container
 {
-    box-shadow: 0 8px 6px -6px black;
-    background-color: rgba(43, 92, 43, 0.952);
-    border: 1px solid white;
-    margin-bottom: 30px;
+    height: 100%;
+    box-shadow: 0 8px 14px -6px rgba(0, 0, 0, 0.7);
+    background: var(--bb-green);
+    border: 1px solid var(--bb-border);
+    border-radius: var(--bb-radius);
+    color: var(--bb-text);
 }
 main .display-quotes .card.quote-container .card-body h5
 {
     text-align: center;
-    color: white;
+    color: var(--bb-gold);
     font-family: 'Righteous', cursive;
-    letter-spacing: 2px;
-}
-main .display-quotes .card.quote-container p
-{
-    text-align: center;
-    color: white;
     letter-spacing: 1px;
 }
+main .display-quotes .card.quote-container .card-text
+{
+    text-align: center;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.5;
+}
+main .display-quotes .card.quote-container .card-footer
+{
+    background: rgba(0, 0, 0, 0.25);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    text-align: center;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+main .display-quotes .no-quotes
+{
+    width: 100%;
+    margin: 0 15px 30px;
+    padding: 14px;
+    text-align: center;
+    border-radius: var(--bb-radius);
+    background: rgba(11, 19, 13, 0.8);
+    color: var(--bb-text);
+}
 
+/* ---------- Episode deaths ---------- */
 main .display-episod-deaths .btn-section
 {
     text-align: center;
-    margin-bottom: 40px;
+    margin: 20px 0 30px;
 }
-
 main .display-episod-deaths a.episod-deaths-btn
 {
-    border: 1px solid white;
-    padding: 15px;
+    display: inline-block;
+    border: 1px solid var(--bb-border);
+    border-radius: var(--bb-radius);
+    padding: 12px 22px;
     text-decoration: none;
-    color: white;
-    background-image: url(../img/breaking_bad_dark_green.jpg);
-    background-repeat: no-repeat;
-    background-position: bottom;
+    color: var(--bb-text);
+    background: var(--bb-panel-bg);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
     font-family: 'Righteous', cursive;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+main .display-episod-deaths a.episod-deaths-btn:hover,
+main .display-episod-deaths a.episod-deaths-btn:focus
+{
+    transform: translateY(-2px);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.55);
+    color: var(--bb-gold);
+}
+main .display-episod-deaths a.episod-deaths-btn .caret
+{
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.2s ease;
+}
+main .display-episod-deaths a.episod-deaths-btn[aria-expanded="true"] .caret
+{
+    transform: rotate(180deg);
 }
 main .display-episod-deaths .collapse-container .card-body-container
 {
-    background-color: rgba(43, 92, 43, 0.952);
-    border: 1px solid white;
+    background: var(--bb-green);
+    border: 1px solid var(--bb-border);
+    border-radius: var(--bb-radius);
 }
-main .display-episod-deaths .collapse-container .card-body-container #accordionEpisods .card .card-header
+main .display-episod-deaths .death-card
 {
-    background-image: url(../img/breaking_bad_dark_green.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    border-radius: var(--bb-radius);
+    margin-bottom: 16px;
+    overflow: hidden;
 }
-main .display-episod-deaths .collapse-container .card-body-container #accordionEpisods .card .card-header button
+main .display-episod-deaths .death-card:last-child
 {
+    margin-bottom: 0;
+}
+main .display-episod-deaths .death-card .card-header
+{
+    padding: 0;
+    background: var(--bb-panel-bg);
+}
+main .display-episod-deaths .death-card .card-header button
+{
+    width: 100%;
+    padding: 12px 16px;
+    text-align: center;
     text-decoration: none;
-    color: white;
+    color: var(--bb-text);
+    white-space: normal;
 }
-main .display-episod-deaths .collapse-container .card-body-container #accordionEpisods .card .card-header button span
+main .display-episod-deaths .death-card .card-header button:focus
 {
-    font-size: 20px;
-    font-family: 'Righteous', cursive;
-    color: white;
+    box-shadow: inset 0 0 0 2px var(--bb-gold);
 }
-main .display-episod-deaths .collapse-container .card-body-container #accordionEpisods .card .collapse.show .card-body p span
+main .display-episod-deaths .death-card .card-header button span
 {
+    display: block;
+    font-size: 1.25rem;
     font-family: 'Righteous', cursive;
+    color: var(--bb-gold);
 }
-main .display-episod-deaths .collapse-container .card-body-container #accordionEpisods .card .collapse.show .card-body
+main .display-episod-deaths .death-card .card-body
 {
     text-align: center;
+    color: #1f2a20;
+}
+main .display-episod-deaths .death-card .card-body p
+{
+    margin-bottom: 0.5rem;
+}
+main .display-episod-deaths .death-card .card-body p span
+{
+    font-family: 'Righteous', cursive;
+    color: var(--bb-green);
+}
+main .display-episod-deaths .death-card .card-body .last-words
+{
+    margin: 8px 0 0;
+    font-style: italic;
+    color: #4a554b;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 767.98px)
+{
+    main .container .heading-container
+    {
+        margin-top: 16px;
+    }
+    main .display-char-info .image-info
+    {
+        margin-bottom: 20px;
+    }
+    main .display-char-info .image-info img
+    {
+        max-height: 420px;
+    }
+    main .display-char-info .char-info p
+    {
+        font-size: 1rem;
+    }
+    main .display-episod-deaths .collapse-container .card-body-container
+    {
+        padding: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+    .cssanimation
+    {
+        animation: none !important;
+    }
 }
